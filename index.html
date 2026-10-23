@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تثبيت تطبيق البقال - ملف حزمة أندرويد APK</title>
+    <style>
+        :root {
+            --primary: #10B981;
+            --primary-dark: #059669;
+            --primary-light: #D1FAE5;
+            --surface: #FFFFFF;
+            --bg: #F3F4F6;
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 50%, #E0F2FE 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            color: var(--text-main);
+        }
+
+        .container {
+            max-width: 580px;
+            width: 100%;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2), 0 0 0 1px rgba(16, 185, 129, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+            color: white;
+            padding: 40px 24px 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header .icon {
+            font-size: 56px;
+            margin-bottom: 12px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            width: 88px;
+            height: 88px;
+            line-height: 88px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.92;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .badge-version {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 32px 24px;
+        }
+
+        .action-box {
+            background: #F9FAFB;
+            border: 2px dashed #A7F3D0;
+            border-radius: var(--radius-md);
+            padding: 24px 20px;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .btn-install {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 18px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.45);
+            transition: all 0.2s ease;
+        }
+
+        .btn-install:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px -5px rgba(16, 185, 129, 0.55);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .btn-install:active {
+            transform: translateY(0);
+        }
+
+        .btn-sub {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            color: #047857;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: underline;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .file-info {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .steps-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .steps-card h2 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-num {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        .step-text strong {
+            color: var(--text-main);
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .features-list li {
+            font-size: 13px;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #F9FAFB;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .features-list li span {
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            border-top: 1px solid #F3F4F6;
+            padding: 16px 24px;
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="icon">🛒</div>
+        <h1>تطبيق البقال (Al-Baqqal)</h1>
+        <p>حزمة تثبيت تطبيق البقال لنظام أندرويد جاهزة للتحميل والتثبيت المباشر على هاتفك</p>
+        <span class="badge-version">حزمة APK أندرويد • إصدار جاهز</span>
+    </div>
+
+    <div class="content">
+        <!-- زر التثبيت الرئيسي -->
+        <div class="action-box">
+            <a href="./AlBaqqal_App.apk" download="AlBaqqal_App.apk" class="btn-install" id="installBtn">
+                <span>📲</span>
+                <span>تثبيت وتحميل التطبيق (APK)</span>
+            </a>
+            
+            <p class="file-info">اسم الملف: <strong>AlBaqqal_App.apk</strong> • الحجم: ~23 ميجابايت</p>
+            
+            <a href="./app-debug.apk" download="app-debug.apk" class="btn-sub">
+                أو تحميل من الرابط المباشر البديل (app-debug.apk) ⬇️
+            </a>
+        </div>
+
+        <!-- خطوات التثبيت على الهاتف -->
+        <div class="steps-card">
+            <h2><span>📋</span> خطوات التثبيت على هاتفك بسهولة:</h2>
+            
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                    اضغط على الزر الأخضر أعلاه <strong>"تثبيت وتحميل التطبيق (APK)"</strong> لحفظ الملف على جهازك أو هاتفك.
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                    افتح الملف المنزّل (<strong>AlBaqqal_App.apk</strong>). إذا ظهرت رسالة أمان: اضغط <strong>"الإعدادات" (Settings)</strong> ثم فعّل <strong>"السماح بتثبيت التطبيقات من هذا المصدر" (Install unknown apps)</strong>.
+                </div>
+            </div>
+
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                    اضغط <strong>"تثبيت" (Install)</strong> واستمتع بتطبيق البقال بكل مزاياه الجديدة فوراً على هاتفك!
+                </div>
+            </div>
+        </div>
+
+        <!-- مزايا التطبيق المتاحة في هذه الحزمة -->
+        <div class="steps-card">
+            <h2><span>✨</span> الميزات المجهزة في هذه الحزمة:</h2>
+            <ul class="features-list">
+                <li><span>✓</span> إدارة المنتجات بالصور</li>
+                <li><span>✓</span> قسم الإعلانات بالصور</li>
+                <li><span>✓</span> إعدادات فودافون كاش</li>
+                <li><span>✓</span> إعدادات أرقام إنستاباي</li>
+                <li><span>✓</span> تغيير بيانات الأدمن والسر</li>
+                <li><span>✓</span> تصفير وحذف البيانات</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        تطبيق البقال الذكي • تم إعداد الحزمة بنجاح داخل ملفات المشروع
+    </div>
+</div>
+
+<script>
+    // تسجيل تفاعل الضغط لتسهيل تجربة المستخدم
+    document.getElementById('installBtn').addEventListener('click', function() {
+        console.log('Downloading AlBaqqal_App.apk');
+    });
+</script>
+
+</body>
+</html>
